@@ -84,10 +84,10 @@ function New-SPListItem
         $InvokeRestMethodParameter = @{
             Method      = 'Post'
             Uri         = '{0}/_vti_bin/listdata.svc/{1}' -f $SiteUrl.AbsoluteUri.TrimEnd('/'), $ListName
-            Body        = $Property | ConvertTo-Json
-            ContentType = 'application/json; odata=verbose'
+            Body        = [System.Text.Encoding]::UTF8.GetBytes(($Property | ConvertTo-Json))
+            ContentType = 'application/json; charset=utf-8; odata=verbose'
             Headers     = @{
-                Accept      = 'application/json; odata=verbose'
+                Accept      = 'application/json; charset=utf-8; odata=verbose'
             }
         }
 

@@ -87,7 +87,7 @@ function Remove-SPListItem
                 Method          = 'Post'
                 Uri             = '{0}/_vti_bin/listdata.svc/{1}({2})' -f $SiteUrl.AbsoluteUri.TrimEnd('/'), $ListName, $CurrentItemId
                 Headers         = @{
-                    Accept          = 'application/json; odata=verbose'
+                    Accept          = 'application/json; charset=utf-8; odata=verbose'
                     'X-HTTP-Method' = 'DELETE'
                     'If-Match'      = '*'
                 }

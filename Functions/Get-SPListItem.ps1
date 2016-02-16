@@ -91,7 +91,7 @@ function Get-SPListItem
             Method  = 'Get'
             Uri     = '{0}/_vti_bin/listdata.svc/{1}{{0}}?$expand=CreatedBy,ModifiedBy' -f $SiteUrl.AbsoluteUri.TrimEnd('/'), $ListName
             Headers = @{
-                Accept  = 'application/json; odata=verbose'
+                Accept  = 'application/json; charset=utf-8; odata=verbose'
             }
         }
 
