@@ -1,6 +1,6 @@
 
-$SiteUrl  = 'http://SP01/sites/mysite'
-$ListName = 'List'
+$SiteUrl  = 'http://SP01.contoso.com/sites/mysite'
+$ListName = 'MyList'
 
 # Get all list items
 Get-SPListItem -SiteUrl $SiteUrl -ListName $ListName
