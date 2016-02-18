@@ -1,0 +1,39 @@
+{
+  "d": {
+    "__metadata": {
+      "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(1)",
+      "etag": "W/\"1",
+      "type": "Microsoft.SharePoint.DataService.MyListItem"
+    },
+    "Id": 1,
+    "Title": "Item A",
+    "Description": "My item A description",
+    "Number": 123,
+    "Date": "\/Date(1451606400000)\/",
+    "Choise": {
+      "__deferred": {
+        "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(1)/Choise"
+      }
+    },
+    "ChoiseValue": "Option 1",
+    "ContentType": null,
+    "ContentTypeID": null,
+    "Created": "\/Date(1455627274000)\/",
+    "CreatedBy": {
+      "__deferred": {
+        "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(1)/CreatedBy"
+      }
+    },
+    "CreatedById": 42,
+    "Modified": "\/Date(1455633970000)\/",
+    "ModifiedBy": {
+      "__deferred": {
+        "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(1)/ModifiedBy"
+      }
+    },
+    "ModifiedById": 42,
+    "Owshiddenversion": 1,
+    "Version": "1.0",
+    "Path": "/sites/mysite/Lists/MyList"
+  }
+}

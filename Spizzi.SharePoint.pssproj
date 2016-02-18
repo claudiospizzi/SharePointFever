@@ -32,6 +32,7 @@
     <Folder Include="Resources\" />
     <Folder Include="Scripts\" />
     <Folder Include="Tests\" />
+    <Folder Include="Tests\TestData\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Examples\ListItem.ps1" />
@@ -50,6 +51,11 @@
     <Compile Include="Tests\New-SPListItem.Tests.ps1" />
     <Compile Include="Tests\Remove-SPListItem.Tests.ps1" />
     <Compile Include="Tests\Set-SPListItem.Tests.ps1" />
+    <Compile Include="Tests\TestData\ListItem.SP01.Get.All.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Tests\TestData\ListItem.SP01.New.json" />
+    <Content Include="Tests\TestData\ListItem.SP01.Get.One.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />

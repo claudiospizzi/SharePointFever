@@ -1,0 +1,387 @@
+{
+  "d": {
+    "results": [
+      {
+        "__metadata": {
+          "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(1)",
+          "etag": "W/\"1",
+          "type": "Microsoft.SharePoint.DataService.MyListItem"
+        },
+        "Id": 1,
+        "Title": "Item A",
+        "Description": "My item A description",
+        "Number": 123,
+        "Date": "\/Date(1451606400000)\/",
+        "Choise": {
+          "__deferred": {
+            "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(1)/Choise"
+          }
+        },
+        "ChoiseValue": "Option 1",
+        "ContentType": "Item",
+        "ContentTypeID": "0x0100A3ECF811FBE2A9439CB5A863DF4204DB",
+        "Created": "\/Date(1455627274000)\/",
+        "CreatedBy": {
+          "__metadata": {
+            "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)",
+            "etag": "W/\"3",
+            "type": "Microsoft.SharePoint.DataService.UserInformationListItem"
+          },
+          "ContentTypeID": "0x010A002BCA2A5C8C3BEC4F994A50D03C1F724D",
+          "Name": "John Doe",
+          "Account": "CONTOSO\\johndoe",
+          "WorkEMail": null,
+          "MobilePhone": null,
+          "AboutMe": null,
+          "SIPAddress": null,
+          "IsSiteAdmin": false,
+          "Deleted": false,
+          "Picture": null,
+          "Department": null,
+          "Title": null,
+          "FirstName": "John",
+          "LastName": "Doe",
+          "WorkPhone": null,
+          "UserName": "johndoe",
+          "WebSite": null,
+          "AskMeAbout": null,
+          "Office": null,
+          "Id": 42,
+          "ContentType": "Person",
+          "Modified": "\/Date(1455293002000)\/",
+          "Created": "\/Date(1455292410000)\/",
+          "CreatedBy": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/CreatedBy"
+            }
+          },
+          "CreatedById": 890,
+          "ModifiedBy": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/ModifiedBy"
+            }
+          },
+          "ModifiedById": 1073741823,
+          "Owshiddenversion": 3,
+          "Version": "1.0",
+          "Attachments": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/Attachments"
+            }
+          },
+          "Path": "/sites/mysite/_catalogs/users"
+        },
+        "CreatedById": 42,
+        "Modified": "\/Date(1455633970000)\/",
+        "ModifiedBy": {
+          "__metadata": {
+            "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)",
+            "etag": "W/\"3",
+            "type": "Microsoft.SharePoint.DataService.UserInformationListItem"
+          },
+          "ContentTypeID": "0x010A002BCA2A5C8C3BEC4F994A50D03C1F724D",
+          "Name": "John Doe",
+          "Account": "CONTOSO\\johndoe",
+          "WorkEMail": null,
+          "MobilePhone": null,
+          "AboutMe": null,
+          "SIPAddress": null,
+          "IsSiteAdmin": false,
+          "Deleted": false,
+          "Picture": null,
+          "Department": null,
+          "Title": null,
+          "FirstName": "John",
+          "LastName": "Doe",
+          "WorkPhone": null,
+          "UserName": "johndoe",
+          "WebSite": null,
+          "AskMeAbout": null,
+          "Office": null,
+          "Id": 42,
+          "ContentType": "Person",
+          "Modified": "\/Date(1455293002000)\/",
+          "Created": "\/Date(1455292410000)\/",
+          "CreatedBy": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/CreatedBy"
+            }
+          },
+          "CreatedById": 890,
+          "ModifiedBy": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/ModifiedBy"
+            }
+          },
+          "ModifiedById": 1073741823,
+          "Owshiddenversion": 3,
+          "Version": "1.0",
+          "Attachments": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/Attachments"
+            }
+          },
+          "Path": "/sites/mysite/_catalogs/users"
+        },
+        "ModifiedById": 42,
+        "Owshiddenversion": 1,
+        "Version": "1.0",
+        "Path": "/sites/mysite/Lists/MyList"
+      },
+      {
+        "__metadata": {
+          "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(2)",
+          "etag": "W/\"2",
+          "type": "Microsoft.SharePoint.DataService.MyListItem"
+        },
+        "Id": 2,
+        "Title": "Item B",
+        "Description": "My item B description",
+        "Number": 456,
+        "Date": "\/Date(1483228799000)\/",
+        "Choise": {
+          "__deferred": {
+            "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(2)/Choise"
+          }
+        },
+        "ChoiseValue": "Option 2",
+        "ContentType": "Item",
+        "ContentTypeID": "0x0100A3ECF811FBE2A9439CB5A863DF4204DB",
+        "Created": "\/Date(1455627275000)\/",
+        "CreatedBy": {
+          "__metadata": {
+            "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)",
+            "etag": "W/\"3",
+            "type": "Microsoft.SharePoint.DataService.UserInformationListItem"
+          },
+          "ContentTypeID": "0x010A002BCA2A5C8C3BEC4F994A50D03C1F724D",
+          "Name": "John Doe",
+          "Account": "CONTOSO\\johndoe",
+          "WorkEMail": null,
+          "MobilePhone": null,
+          "AboutMe": null,
+          "SIPAddress": null,
+          "IsSiteAdmin": false,
+          "Deleted": false,
+          "Picture": null,
+          "Department": null,
+          "Title": null,
+          "FirstName": "John",
+          "LastName": "Doe",
+          "WorkPhone": null,
+          "UserName": "johndoe",
+          "WebSite": null,
+          "AskMeAbout": null,
+          "Office": null,
+          "Id": 42,
+          "ContentType": "Person",
+          "Modified": "\/Date(1455293002000)\/",
+          "Created": "\/Date(1455292410000)\/",
+          "CreatedBy": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/CreatedBy"
+            }
+          },
+          "CreatedById": 890,
+          "ModifiedBy": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/ModifiedBy"
+            }
+          },
+          "ModifiedById": 1073741823,
+          "Owshiddenversion": 3,
+          "Version": "1.0",
+          "Attachments": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/Attachments"
+            }
+          },
+          "Path": "/sites/mysite/_catalogs/users"
+        },
+        "CreatedById": 42,
+        "Modified": "\/Date(1455633971000)\/",
+        "ModifiedBy": {
+          "__metadata": {
+            "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)",
+            "etag": "W/\"3",
+            "type": "Microsoft.SharePoint.DataService.UserInformationListItem"
+          },
+          "ContentTypeID": "0x010A002BCA2A5C8C3BEC4F994A50D03C1F724D",
+          "Name": "John Doe",
+          "Account": "CONTOSO\\johndoe",
+          "WorkEMail": null,
+          "MobilePhone": null,
+          "AboutMe": null,
+          "SIPAddress": null,
+          "IsSiteAdmin": false,
+          "Deleted": false,
+          "Picture": null,
+          "Department": null,
+          "Title": null,
+          "FirstName": "John",
+          "LastName": "Doe",
+          "WorkPhone": null,
+          "UserName": "johndoe",
+          "WebSite": null,
+          "AskMeAbout": null,
+          "Office": null,
+          "Id": 42,
+          "ContentType": "Person",
+          "Modified": "\/Date(1455293002000)\/",
+          "Created": "\/Date(1455292410000)\/",
+          "CreatedBy": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/CreatedBy"
+            }
+          },
+          "CreatedById": 890,
+          "ModifiedBy": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/ModifiedBy"
+            }
+          },
+          "ModifiedById": 1073741823,
+          "Owshiddenversion": 3,
+          "Version": "1.0",
+          "Attachments": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/Attachments"
+            }
+          },
+          "Path": "/sites/mysite/_catalogs/users"
+        },
+        "ModifiedById": 42,
+        "Owshiddenversion": 2,
+        "Version": "2.0",
+        "Path": "/sites/mysite/Lists/MyList"
+      },
+      {
+        "__metadata": {
+          "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(3)",
+          "etag": "W/\"3",
+          "type": "Microsoft.SharePoint.DataService.MyListItem"
+        },
+        "Id": 3,
+        "Title": "Item C",
+        "Description": "My item C description",
+        "Number": 789,
+        "Date": "\/Date(1468418498000)\/",
+        "Choise": {
+          "__deferred": {
+            "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(3)/Choise"
+          }
+        },
+        "ChoiseValue": "Option 3",
+        "ContentType": "Item",
+        "ContentTypeID": "0x0100A3ECF811FBE2A9439CB5A863DF4204DB",
+        "Created": "\/Date(1455627276000)\/",
+        "CreatedBy": {
+          "__metadata": {
+            "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)",
+            "etag": "W/\"3",
+            "type": "Microsoft.SharePoint.DataService.UserInformationListItem"
+          },
+          "ContentTypeID": "0x010A002BCA2A5C8C3BEC4F994A50D03C1F724D",
+          "Name": "John Doe",
+          "Account": "CONTOSO\\johndoe",
+          "WorkEMail": null,
+          "MobilePhone": null,
+          "AboutMe": null,
+          "SIPAddress": null,
+          "IsSiteAdmin": false,
+          "Deleted": false,
+          "Picture": null,
+          "Department": null,
+          "Title": null,
+          "FirstName": "John",
+          "LastName": "Doe",
+          "WorkPhone": null,
+          "UserName": "johndoe",
+          "WebSite": null,
+          "AskMeAbout": null,
+          "Office": null,
+          "Id": 42,
+          "ContentType": "Person",
+          "Modified": "\/Date(1455293002000)\/",
+          "Created": "\/Date(1455292410000)\/",
+          "CreatedBy": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/CreatedBy"
+            }
+          },
+          "CreatedById": 890,
+          "ModifiedBy": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/ModifiedBy"
+            }
+          },
+          "ModifiedById": 1073741823,
+          "Owshiddenversion": 3,
+          "Version": "1.0",
+          "Attachments": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/Attachments"
+            }
+          },
+          "Path": "/sites/mysite/_catalogs/users"
+        },
+        "CreatedById": 42,
+        "Modified": "\/Date(1455633972000)\/",
+        "ModifiedBy": {
+          "__metadata": {
+            "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)",
+            "etag": "W/\"3",
+            "type": "Microsoft.SharePoint.DataService.UserInformationListItem"
+          },
+          "ContentTypeID": "0x010A002BCA2A5C8C3BEC4F994A50D03C1F724D",
+          "Name": "John Doe",
+          "Account": "CONTOSO\\johndoe",
+          "WorkEMail": null,
+          "MobilePhone": null,
+          "AboutMe": null,
+          "SIPAddress": null,
+          "IsSiteAdmin": false,
+          "Deleted": false,
+          "Picture": null,
+          "Department": null,
+          "Title": null,
+          "FirstName": "John",
+          "LastName": "Doe",
+          "WorkPhone": null,
+          "UserName": "johndoe",
+          "WebSite": null,
+          "AskMeAbout": null,
+          "Office": null,
+          "Id": 42,
+          "ContentType": "Person",
+          "Modified": "\/Date(1455293002000)\/",
+          "Created": "\/Date(1455292410000)\/",
+          "CreatedBy": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/CreatedBy"
+            }
+          },
+          "CreatedById": 890,
+          "ModifiedBy": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/ModifiedBy"
+            }
+          },
+          "ModifiedById": 1073741823,
+          "Owshiddenversion": 3,
+          "Version": "1.0",
+          "Attachments": {
+            "__deferred": {
+              "uri": "http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/UserInformationList(42)/Attachments"
+            }
+          },
+          "Path": "/sites/mysite/_catalogs/users"
+        },
+        "ModifiedById": 42,
+        "Owshiddenversion": 3,
+        "Version": "3.0",
+        "Path": "/sites/mysite/Lists/MyList"
+      }
+    ]
+  }
+}
