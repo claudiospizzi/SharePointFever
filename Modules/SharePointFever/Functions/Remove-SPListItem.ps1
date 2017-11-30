@@ -39,7 +39,7 @@
     Tested with SharePoint 2010.
 
 .LINK
-    https://github.com/claudiospizzi/Spizzi.SharePoint
+    https://github.com/claudiospizzi/SharePointFever
 #>
 
 function Remove-SPListItem

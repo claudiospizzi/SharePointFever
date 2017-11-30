@@ -3,7 +3,7 @@
 os: WMF 5
 
 # Clone Directory
-clone_folder: C:\Projects\Spizzi.SharePoint
+clone_folder: C:\Projects\SharePointFever
 
 # Install Pester
 install: 

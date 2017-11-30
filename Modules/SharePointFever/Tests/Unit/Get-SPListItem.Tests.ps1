@@ -1,24 +1,16 @@
 ﻿
-# Load module
-if ($Env:APPVEYOR -eq 'True')
-{
-    $Global:TestRoot = (Get-Module Spizzi.SharePoint -ListAvailable).ModuleBase
+$modulePath = Resolve-Path -Path "$PSScriptRoot\..\..\.." | Select-Object -ExpandProperty Path
+$moduleName = Resolve-Path -Path "$PSScriptRoot\..\.." | Get-Item | Select-Object -ExpandProperty BaseName
 
-    Import-Module Spizzi.SharePoint -Force
-}
-else
-{
-    $Global:TestRoot = (Split-Path -Parent $MyInvocation.MyCommand.Path | Join-Path -ChildPath '..' | Resolve-Path).Path
-
-    Import-Module "$Global:TestRoot\Spizzi.SharePoint.psd1" -Force
-}
+Remove-Module -Name $moduleName -Force -ErrorAction SilentlyContinue
+Import-Module -Name "$modulePath\$moduleName" -Force
 
 # Execute tests
 Describe 'Get-SPListItem' {
 
     Context 'GetAll' {
 
-        Mock Invoke-RestMethod -ModuleName 'Spizzi.SharePoint' -ParameterFilter { $Method = 'Get'; $Uri -eq 'http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList?$expand=CreatedBy,ModifiedBy' } {
+        Mock Invoke-RestMethod -ModuleName 'SharePointFever' -ParameterFilter { $Method = 'Get'; $Uri -eq 'http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList?$expand=CreatedBy,ModifiedBy' } {
             Get-Content -Path "$Global:TestRoot\Tests\TestData\ListItem.SP01.Get.All.json" | ConvertFrom-Json
         }
 
@@ -33,7 +25,7 @@ Describe 'Get-SPListItem' {
 
             # Assert
             $Result.Count | Should Be 3
-            Assert-MockCalled -CommandName 'Invoke-RestMethod' -ModuleName 'Spizzi.SharePoint' -Times 1 -Exactly
+            Assert-MockCalled -CommandName 'Invoke-RestMethod' -ModuleName 'SharePointFever' -Times 1 -Exactly
 
             # Assert Item 1
             $Result[0].Id          | Should Be 1
@@ -78,7 +70,7 @@ Describe 'Get-SPListItem' {
 
     Context 'GetOne' {
 
-        Mock Invoke-RestMethod -ModuleName 'Spizzi.SharePoint' -ParameterFilter { $Method = 'Get'; $Uri -eq 'http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(1)?$expand=CreatedBy,ModifiedBy' } {
+        Mock Invoke-RestMethod -ModuleName 'SharePointFever' -ParameterFilter { $Method = 'Get'; $Uri -eq 'http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(1)?$expand=CreatedBy,ModifiedBy' } {
             Get-Content -Path "$Global:TestRoot\Tests\TestData\ListItem.SP01.Get.One.json" | ConvertFrom-Json
         }
 
@@ -93,7 +85,7 @@ Describe 'Get-SPListItem' {
             $Result = Get-SPListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $ItemId
 
             # Assert
-            Assert-MockCalled -CommandName 'Invoke-RestMethod' -ModuleName 'Spizzi.SharePoint' -Times 1 -Exactly
+            Assert-MockCalled -CommandName 'Invoke-RestMethod' -ModuleName 'SharePointFever' -Times 1 -Exactly
 
             # Assert Item
             $Result.Id          | Should Be 1
@@ -112,7 +104,7 @@ Describe 'Get-SPListItem' {
 
     Context 'NotExist' {
 
-        Mock Invoke-RestMethod -ModuleName 'Spizzi.SharePoint' -ParameterFilter { $Method = 'Get'; $Uri -eq 'http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(4)?$expand=CreatedBy,ModifiedBy' } {
+        Mock Invoke-RestMethod -ModuleName 'SharePointFever' -ParameterFilter { $Method = 'Get'; $Uri -eq 'http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(4)?$expand=CreatedBy,ModifiedBy' } {
             throw "Resource not found for the segment 'Inventory'."
         }
 
@@ -127,7 +119,7 @@ Describe 'Get-SPListItem' {
             { Get-SPListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $ItemId -ErrorAction Stop } | Should Throw
 
             # Assert
-            Assert-MockCalled -CommandName 'Invoke-RestMethod' -ModuleName 'Spizzi.SharePoint' -Times 1 -Exactly
+            Assert-MockCalled -CommandName 'Invoke-RestMethod' -ModuleName 'SharePointFever' -Times 1 -Exactly
         }
     }
 }
