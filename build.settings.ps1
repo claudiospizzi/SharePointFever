@@ -3,8 +3,6 @@ Properties {
 
     $ModuleNames = 'SharePointFever'
 
-    $SourceNames = 'SharePointFever'
-
     $GalleryEnabled = $true
     $GalleryKey     = Get-VaultSecureString -TargetName 'PS-SecureString-GalleryKey'
 

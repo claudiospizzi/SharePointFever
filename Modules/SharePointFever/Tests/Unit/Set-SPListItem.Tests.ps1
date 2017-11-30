@@ -5,6 +5,8 @@ $moduleName = Resolve-Path -Path "$PSScriptRoot\..\.." | Get-Item | Select-Objec
 Remove-Module -Name $moduleName -Force -ErrorAction SilentlyContinue
 Import-Module -Name "$modulePath\$moduleName" -Force
 
+$Global:TestRoot = "$modulePath\$moduleName"
+
 # Execute tests
 Describe 'Set-SPListItem' {
 
@@ -15,7 +17,7 @@ Describe 'Set-SPListItem' {
         }
 
         Mock Invoke-RestMethod -ModuleName 'SharePointFever' -ParameterFilter { $Method = 'Get'; $Uri -eq 'http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(1)?$expand=CreatedBy,ModifiedBy' } {
-            Get-Content -Path "$Global:TestRoot\Tests\TestData\ListItem.SP01.Get.One.json" | ConvertFrom-Json
+            Get-Content -Path "$Global:TestRoot\Tests\Unit\TestData\ListItem.SP01.Get.One.json" | ConvertFrom-Json
         }
 
         It 'ShouldParseResult' {
@@ -60,7 +62,7 @@ Describe 'Set-SPListItem' {
         }
 
         It 'ShouldThrowError' {
-        
+
             # Arrange
             $SiteUrl  = 'http://SP01.contoso.com/sites/mysite'
             $ListName = 'MyList'
@@ -89,7 +91,7 @@ Describe 'Set-SPListItem' {
         }
 
         It 'ShouldThrowError' {
-        
+
             # Arrange
             $SiteUrl  = 'http://SP01.contoso.com/sites/mysite'
             $ListName = 'MyList'

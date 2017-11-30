@@ -5,6 +5,8 @@ $moduleName = Resolve-Path -Path "$PSScriptRoot\..\.." | Get-Item | Select-Objec
 Remove-Module -Name $moduleName -Force -ErrorAction SilentlyContinue
 Import-Module -Name "$modulePath\$moduleName" -Force
 
+$Global:TestRoot = "$modulePath\$moduleName"
+
 # Execute tests
 Describe 'Remove-SPListItem' {
 
@@ -37,7 +39,7 @@ Describe 'Remove-SPListItem' {
         }
 
         It 'ShouldThrowError' {
-        
+
             # Arrange
             $SiteUrl  = 'http://SP01.contoso.com/sites/mysite'
             $ListName = 'MyList'
