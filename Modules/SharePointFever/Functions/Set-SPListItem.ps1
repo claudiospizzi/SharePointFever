@@ -46,32 +46,32 @@
 
 function Set-SPListItem
 {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     param
     (
-        [Parameter(Position=0,
-                   Mandatory=$true)]
-        [Uri] $SiteUrl,
+        [Parameter(Position = 0, Mandatory = $true)]
+        [Uri]
+        $SiteUrl,
 
-        [Parameter(Position=1,
-                   Mandatory=$true)]
-        [String] $ListName,
+        [Parameter(Position = 1, Mandatory = $true)]
+        [String]
+        $ListName,
 
-        [Parameter(Position=2,
-                   Mandatory=$true)]
-        [Int32[]] $ItemId,
+        [Parameter(Position = 2, Mandatory = $true)]
+        [Int32[]]
+        $ItemId,
 
-        [Parameter(Position=3,
-                   Mandatory=$true)]
-        [Hashtable] $Property,
+        [Parameter(Position = 3, Mandatory = $true)]
+        [Hashtable]
+        $Property,
 
-        [Parameter(Position=4,
-                   Mandatory=$false)]
-        [PSCredential] $Credential,
+        [Parameter(Position = 4, Mandatory = $false)]
+        [PSCredential]
+        $Credential,
 
-        [Parameter(Position=5,
-                   Mandatory=$false)]
-        [Switch] $UseDefaultCredentials
+        [Parameter(Position = 5, Mandatory = $false)]
+        [Switch]
+        $UseDefaultCredentials
     )
 
     begin
@@ -88,26 +88,29 @@ function Set-SPListItem
         {
             # Define the REST API query parameters
             $InvokeRestMethodParameter = @{
-                Method          = 'Post'
-                Uri             = '{0}/_vti_bin/listdata.svc/{1}({2})' -f $SiteUrl.AbsoluteUri.TrimEnd('/'), $ListName, $CurrentItemId
-                Body            = [System.Text.Encoding]::UTF8.GetBytes(($Property | ConvertTo-Json))
-                ContentType     = 'application/json; charset=utf-8; odata=verbose'
-                Headers         = @{
+                Method      = 'Post'
+                Uri         = '{0}/_vti_bin/listdata.svc/{1}({2})' -f $SiteUrl.AbsoluteUri.TrimEnd('/'), $ListName, $CurrentItemId
+                Body        = [System.Text.Encoding]::UTF8.GetBytes(($Property | ConvertTo-Json))
+                ContentType = 'application/json; charset=utf-8; odata=verbose'
+                Headers     = @{
                     Accept          = 'application/json; charset=utf-8; odata=verbose'
                     'X-HTTP-Method' = 'MERGE'
                     'If-Match'      = '*'
                 }
             }
 
-            try
+            if ($PSCmdlet.ShouldProcess($InvokeRestMethodParameter.Uri, 'Invoke'))
             {
-                Invoke-RestMethod @InvokeRestMethodParameter @CredentialParameters -ErrorAction Stop | Out-Null
+                try
+                {
+                    Invoke-RestMethod @InvokeRestMethodParameter @CredentialParameters -ErrorAction Stop | Out-Null
 
-                Get-SPListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $CurrentItemId @CredentialParameters
-            }
-            catch
-            {
-                Write-Error $_.Exception.Message
+                    Get-SPListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $CurrentItemId @CredentialParameters
+                }
+                catch
+                {
+                    Write-Error $_.Exception.Message
+                }
             }
         }
     }

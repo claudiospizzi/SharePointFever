@@ -44,28 +44,28 @@
 
 function New-SPListItem
 {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     param
     (
-        [Parameter(Position=0,
-                   Mandatory=$true)]
-        [Uri] $SiteUrl,
+        [Parameter(Position = 0, Mandatory = $true)]
+        [Uri]
+        $SiteUrl,
 
-        [Parameter(Position=1,
-                   Mandatory=$true)]
-        [String] $ListName,
+        [Parameter(Position = 1, Mandatory = $true)]
+        [String]
+        $ListName,
 
-        [Parameter(Position=2,
-                   Mandatory=$true)]
-        [Hashtable] $Property,
+        [Parameter(Position = 2, Mandatory = $true)]
+        [Hashtable]
+        $Property,
 
-        [Parameter(Position=3,
-                   Mandatory=$false)]
-        [PSCredential] $Credential,
+        [Parameter(Position = 3, Mandatory = $false)]
+        [PSCredential]
+        $Credential,
 
-        [Parameter(Position=4,
-                   Mandatory=$false)]
-        [Switch] $UseDefaultCredentials
+        [Parameter(Position = 4, Mandatory = $false)]
+        [Switch]
+        $UseDefaultCredentials
     )
 
     begin
@@ -85,19 +85,22 @@ function New-SPListItem
             Body        = [System.Text.Encoding]::UTF8.GetBytes(($Property | ConvertTo-Json))
             ContentType = 'application/json; charset=utf-8; odata=verbose'
             Headers     = @{
-                Accept      = 'application/json; charset=utf-8; odata=verbose'
+                Accept = 'application/json; charset=utf-8; odata=verbose'
             }
         }
 
-        try
+        if ($PSCmdlet.ShouldProcess($InvokeRestMethodParameter.Uri, 'Invoke'))
         {
-            $Result = Invoke-RestMethod @InvokeRestMethodParameter @CredentialParameters -ErrorAction Stop
+            try
+            {
+                $Result = Invoke-RestMethod @InvokeRestMethodParameter @CredentialParameters -ErrorAction Stop
 
-            Get-SPListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $Result.d.Id @CredentialParameters
-        }
-        catch
-        {
-            Write-Error $_.Exception.Message
+                Get-SPListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $Result.d.Id @CredentialParameters
+            }
+            catch
+            {
+                Write-Error $_.Exception.Message
+            }
         }
     }
 }

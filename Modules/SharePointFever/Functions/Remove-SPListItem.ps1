@@ -42,29 +42,24 @@
 
 function Remove-SPListItem
 {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     param
     (
-        [Parameter(Position=0,
-                   Mandatory=$true)]
+        [Parameter(Position = 0, Mandatory = $true)]
         [Uri] $SiteUrl,
 
-        [Parameter(Position=1,
-                   Mandatory=$true)]
+        [Parameter(Position = 1, Mandatory = $true)]
         [String] $ListName,
 
-        [Parameter(Position=2,
-                   Mandatory=$true,
-                   ValueFromPipeline=$true,
-                   ValueFromPipelineByPropertyName=$true)]
-        [Int32[]] $ItemId,
+        [Parameter(Position = 2, Mandatory = $true, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true)]
+        [Int32[]]
+        $ItemId,
 
-        [Parameter(Position=3,
-                   Mandatory=$false)]
-        [PSCredential] $Credential,
+        [Parameter(Position = 3, Mandatory = $false)]
+        [PSCredential]
+        $Credential,
 
-        [Parameter(Position=4,
-                   Mandatory=$false)]
+        [Parameter(Position = 4, Mandatory = $false)]
         [Switch] $UseDefaultCredentials
     )
 
@@ -82,22 +77,25 @@ function Remove-SPListItem
         {
             # Define the REST API query parameters
             $InvokeRestMethodParameter = @{
-                Method          = 'Post'
-                Uri             = '{0}/_vti_bin/listdata.svc/{1}({2})' -f $SiteUrl.AbsoluteUri.TrimEnd('/'), $ListName, $CurrentItemId
-                Headers         = @{
+                Method  = 'Post'
+                Uri     = '{0}/_vti_bin/listdata.svc/{1}({2})' -f $SiteUrl.AbsoluteUri.TrimEnd('/'), $ListName, $CurrentItemId
+                Headers = @{
                     Accept          = 'application/json; charset=utf-8; odata=verbose'
                     'X-HTTP-Method' = 'DELETE'
                     'If-Match'      = '*'
                 }
             }
 
-            try
+            if ($PSCmdlet.ShouldProcess($InvokeRestMethodParameter.Uri, 'Invoke'))
             {
-                $Result = Invoke-RestMethod @InvokeRestMethodParameter @CredentialParameters -ErrorAction Stop
-            }
-            catch
-            {
-                Write-Error $_.Exception.Message
+                try
+                {
+                    $Result = Invoke-RestMethod @InvokeRestMethodParameter @CredentialParameters -ErrorAction Stop
+                }
+                catch
+                {
+                    Write-Error $_.Exception.Message
+                }
             }
         }
     }

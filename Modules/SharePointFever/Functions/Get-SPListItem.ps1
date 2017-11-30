@@ -48,26 +48,24 @@ function Get-SPListItem
     [CmdletBinding()]
     param
     (
-        [Parameter(Position=0,
-                   Mandatory=$true)]
-        [Uri] $SiteUrl,
+        [Parameter(Position = 0, Mandatory = $true)]
+        [Uri]
+        $SiteUrl,
 
-        [Parameter(Position=1,
-                   Mandatory=$true)]
+        [Parameter(Position = 1, Mandatory = $true)]
         [String] $ListName,
 
-        [Parameter(Position=2,
-                   Mandatory=$false,
-                   ValueFromPipeline=$true)]
-        [Int32[]] $ItemId,
+        [Parameter(Position = 2, Mandatory = $false, ValueFromPipeline = $true)]
+        [Int32[]]
+        $ItemId,
 
-        [Parameter(Position=3,
-                   Mandatory=$false)]
-        [PSCredential] $Credential,
+        [Parameter(Position = 3, Mandatory = $false)]
+        [PSCredential]
+        $Credential,
 
-        [Parameter(Position=4,
-                   Mandatory=$false)]
-        [Switch] $UseDefaultCredentials
+        [Parameter(Position = 4, Mandatory = $false)]
+        [Switch]
+        $UseDefaultCredentials
     )
 
     begin
@@ -89,7 +87,7 @@ function Get-SPListItem
             Method  = 'Get'
             Uri     = '{0}/_vti_bin/listdata.svc/{1}{{0}}?$expand=CreatedBy,ModifiedBy' -f $SiteUrl.AbsoluteUri.TrimEnd('/'), $ListName
             Headers = @{
-                Accept  = 'application/json; charset=utf-8; odata=verbose'
+                Accept = 'application/json; charset=utf-8; odata=verbose'
             }
         }
 
