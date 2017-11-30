@@ -90,7 +90,7 @@ function Remove-SPListItem
             {
                 try
                 {
-                    $Result = Invoke-RestMethod @InvokeRestMethodParameter @CredentialParameters -ErrorAction Stop
+                    Invoke-RestMethod @InvokeRestMethodParameter @CredentialParameters -ErrorAction Stop | Out-Null
                 }
                 catch
                 {
