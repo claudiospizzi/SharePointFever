@@ -1,44 +1,42 @@
 <#
-.SYNOPSIS
+    .SYNOPSIS
     Remove an existing item from a SharePoint list.
 
-.DESCRIPTION
+    .DESCRIPTION
     This functions uses the SharePoint REST API to remove the specified item
     from the list. There will be no output, if the item was removed
     successfully.
 
-.PARAMETER SiteUrl
+    .PARAMETER SiteUrl
     The url to the target SharePoint site.
 
-.PARAMETER ListName
+    .PARAMETER ListName
     The name of the target SharePoint list.
 
-.PARAMETER ItemId
+    .PARAMETER ItemId
     The id of the target SharePoint item to delete.
 
-.PARAMETER Credential
+    .PARAMETER Credential
     Optionally, the credentials for the REST query can be specified.
 
-.PARAMETER UseDefaultCredentials
+    .PARAMETER UseDefaultCredentials
     Optionally, the default use credentials can be used for the REST query.
 
-.INPUTS
+    .INPUTS
     None. No pipeline input defined.
 
-.OUTPUTS
+    .OUTPUTS
     None. No pipline output will be provided.
 
-.EXAMPLE
+    .EXAMPLE
     C:\> Set-SPListItem -SiteUrl 'http://SP01/sites/mysite' -ListName 'List' -ItemId 1
     Remove the specified item from the list.
 
-.NOTES
+    .NOTES
     Author     : Claudio Spizzi
     License    : MIT License
 
-    Tested with SharePoint 2010.
-
-.LINK
+    .LINK
     https://github.com/claudiospizzi/SharePointFever
 #>
 

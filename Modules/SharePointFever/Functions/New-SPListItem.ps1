@@ -1,46 +1,44 @@
 <#
-.SYNOPSIS
+    .SYNOPSIS
     Create an item inside an SharePoint list.
 
-.DESCRIPTION
+    .DESCRIPTION
     This functions uses the SharePoint REST API to create a new item inside a
     list. The created object will be returned to the pipeline, including the
     generated id. The default and metadata properties will be truncated from
     the result object.
 
-.PARAMETER SiteUrl
+    .PARAMETER SiteUrl
     The url to the target SharePoint site.
 
-.PARAMETER ListName
+    .PARAMETER ListName
     The name of the target SharePoint list.
 
-.PARAMETER Property
+    .PARAMETER Property
     A hashtable for the item properties to set.
 
-.PARAMETER Credential
+    .PARAMETER Credential
     Optionally, the credentials for the REST query can be specified.
 
-.PARAMETER UseDefaultCredentials
+    .PARAMETER UseDefaultCredentials
     Optionally, the default use credentials can be used for the REST query.
 
-.INPUTS
+    .INPUTS
     None. No pipeline input defined.
 
-.OUTPUTS
+    .OUTPUTS
     System.Management.Automation.PSCustomObject. The new item as a custom object.
 
-.EXAMPLE
+    .EXAMPLE
     C:\> $Property = @{ Title = 'My Demo Item'; Data = 'Test Data' }
     C:\> Get-SPListItem -SiteUrl 'http://SP01/sites/mysite' -ListName 'List' -Property $Property
     Creates a new item and returns the result to the pipeline.
 
-.NOTES
+    .NOTES
     Author     : Claudio Spizzi
     License    : MIT License
 
-    Tested with SharePoint 2010.
-
-.LINK
+    .LINK
     https://github.com/claudiospizzi/SharePointFever
 #>
 
@@ -93,7 +91,7 @@ function New-SPListItem
 
         try
         {
-            $Result = Invoke-RestMethod @InvokeRestMethodParameter @CredentialParameters -ErrorAction Stop 
+            $Result = Invoke-RestMethod @InvokeRestMethodParameter @CredentialParameters -ErrorAction Stop
 
             Get-SPListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $Result.d.Id @CredentialParameters
         }

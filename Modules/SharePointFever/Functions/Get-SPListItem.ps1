@@ -1,47 +1,45 @@
 <#
-.SYNOPSIS
+    .SYNOPSIS
     Get items from a SharePoint list.
 
-.DESCRIPTION
+    .DESCRIPTION
     This functions uses the SharePoint REST API to query items from a list. The
     default and metadata properties will be truncated from the result object.
 
-.PARAMETER SiteUrl
+    .PARAMETER SiteUrl
     The url to the target SharePoint site.
 
-.PARAMETER ListName
+    .PARAMETER ListName
     The name of the target SharePoint list.
 
-.PARAMETER ItemId
+    .PARAMETER ItemId
     Optionally add one or multiple site ids, to filter the output.
 
-.PARAMETER Credential
+    .PARAMETER Credential
     Optionally, the credentials for the REST query can be specified.
 
-.PARAMETER UseDefaultCredentials
+    .PARAMETER UseDefaultCredentials
     Optionally, the default use credentials can be used for the REST query.
 
-.INPUTS
+    .INPUTS
     System.Int32. The item ids can be passed via pipeline.
 
-.OUTPUTS
+    .OUTPUTS
     System.Management.Automation.PSCustomObject. The list item as custom object.
 
-.EXAMPLE
+    .EXAMPLE
     C:\> Get-SPListItem -SiteUrl 'http://SP01/sites/mysite' -ListName 'List'
     Get all items from the demo list.
 
-.EXAMPLE
+    .EXAMPLE
     C:\> Get-SPListItem -SiteUrl 'http://SP01/sites/mysite' -ListName 'List' -ItemId 1, 2
     Get the items with id 1 and 2 from the demo list.
 
-.NOTES
+    .NOTES
     Author     : Claudio Spizzi
     License    : MIT License
 
-    Tested with SharePoint 2010.
-
-.LINK
+    .LINK
     https://github.com/claudiospizzi/SharePointFever
 #>
 
@@ -105,7 +103,7 @@ function Get-SPListItem
 
                 try
                 {
-                    $Result = Invoke-RestMethod @InvokeRestMethodParameter @CredentialParameters -ErrorAction Stop 
+                    $Result = Invoke-RestMethod @InvokeRestMethodParameter @CredentialParameters -ErrorAction Stop
 
                     $Result.d |
                         Select-Object -Property $ItemIncludeFilter -ExcludeProperty $ItemExcludeFilter
@@ -123,7 +121,7 @@ function Get-SPListItem
 
             try
             {
-                $Result = Invoke-RestMethod @InvokeRestMethodParameter @CredentialParameters -ErrorAction Stop 
+                $Result = Invoke-RestMethod @InvokeRestMethodParameter @CredentialParameters -ErrorAction Stop
 
                 $Result.d.results |
                     Select-Object -Property $ItemIncludeFilter -ExcludeProperty $ItemExcludeFilter

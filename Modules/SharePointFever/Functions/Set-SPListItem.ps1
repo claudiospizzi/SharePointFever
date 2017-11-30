@@ -1,48 +1,46 @@
 <#
-.SYNOPSIS
+    .SYNOPSIS
     Update properties of an existing item inside a SharePoint list.
 
-.DESCRIPTION
+    .DESCRIPTION
     This functions uses the SharePoint REST API to update existing items with
     new properties. The value of the provided properties will always be
     replaced with the new values.
 
-.PARAMETER SiteUrl
+    .PARAMETER SiteUrl
     The url to the target SharePoint site.
 
-.PARAMETER ListName
+    .PARAMETER ListName
     The name of the target SharePoint list.
 
-.PARAMETER ItemId
+    .PARAMETER ItemId
     The id of the target SharePoint item to update.
 
-.PARAMETER Property
+    .PARAMETER Property
     A hashtable for the item properties to update.
 
-.PARAMETER Credential
+    .PARAMETER Credential
     Optionally, the credentials for the REST query can be specified.
 
-.PARAMETER UseDefaultCredentials
+    .PARAMETER UseDefaultCredentials
     Optionally, the default use credentials can be used for the REST query.
 
-.INPUTS
+    .INPUTS
     None. No pipeline input defined.
 
-.OUTPUTS
+    .OUTPUTS
     System.Management.Automation.PSCustomObject. The updated item as a custom object.
-    
-.EXAMPLE
+
+    .EXAMPLE
     C:\> $Property = @{ Data = 'My New Data' }
     C:\> Set-SPListItem -SiteUrl 'http://SP01/sites/mysite' -ListName 'List' -ItemId 1 -Property $Property
     Updates the specified item and returns the result to the pipeline.
 
-.NOTES
+    .NOTES
     Author     : Claudio Spizzi
     License    : MIT License
 
-    Tested with SharePoint 2010.
-
-.LINK
+    .LINK
     https://github.com/claudiospizzi/SharePointFever
 #>
 
@@ -97,7 +95,7 @@ function Set-SPListItem
                 Headers         = @{
                     Accept          = 'application/json; charset=utf-8; odata=verbose'
                     'X-HTTP-Method' = 'MERGE'
-                    'If-Match'      = '*' 
+                    'If-Match'      = '*'
                 }
             }
 

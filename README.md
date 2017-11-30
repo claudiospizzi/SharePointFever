@@ -61,6 +61,7 @@ words are used to test this module:
 
 * Windows PowerShell 5.1
 * Windows Server 2008 R2 / Windows 7
+* SharePoint 2010
 
 
 ## Contribute
