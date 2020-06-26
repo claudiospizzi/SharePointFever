@@ -3,8 +3,8 @@
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', '')]
 param ()
 
-$modulePath = Resolve-Path -Path "$PSScriptRoot\..\..\.." | Select-Object -ExpandProperty Path
-$moduleName = Resolve-Path -Path "$PSScriptRoot\..\.." | Get-Item | Select-Object -ExpandProperty BaseName
+$modulePath = Resolve-Path -Path "$PSScriptRoot\..\..\..\.." | Select-Object -ExpandProperty Path
+$moduleName = Resolve-Path -Path "$PSScriptRoot\..\..\.." | Get-Item | Select-Object -ExpandProperty BaseName
 
 Remove-Module -Name $moduleName -Force -ErrorAction SilentlyContinue
 Import-Module -Name "$modulePath\$moduleName" -Force
@@ -12,7 +12,7 @@ Import-Module -Name "$modulePath\$moduleName" -Force
 $Global:TestRoot = "$modulePath\$moduleName"
 
 # Execute tests
-Describe 'Remove-SPListItem' {
+Describe 'Remove-SPServerListItem' {
 
     Context 'RemoveOne' {
 
@@ -28,7 +28,7 @@ Describe 'Remove-SPListItem' {
             $ItemId   = 1
 
             # Act
-            $Result = Remove-SPListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $ItemId
+            $Result = Remove-SPServerListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $ItemId
 
             # Assert
             $Result | Should Be $null
@@ -50,7 +50,7 @@ Describe 'Remove-SPListItem' {
             $ItemId   = 4
 
             # Act
-            { Remove-SPListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $ItemId -ErrorAction Stop } | Should Throw
+            { Remove-SPServerListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $ItemId -ErrorAction Stop } | Should Throw
 
             # Assert
             Assert-MockCalled -CommandName 'Invoke-RestMethod' -ModuleName 'SharePointFever' -Times 1 -Exactly

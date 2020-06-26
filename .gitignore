@@ -1,4 +1,14 @@
+# Module assemblies
+**/Assemblies/*.dll
 
-# Ignore project files
-/bin/
-/tst/
+# Build output
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+
+# Visual Studio cache, packages
+.vs/
+**/packages/*
+
+# Temporary debug files
+.debug.*.ps1

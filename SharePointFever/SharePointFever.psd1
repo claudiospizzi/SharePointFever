@@ -3,13 +3,13 @@
     RootModule = 'SharePointFever.psm1'
 
     # Version number of this module.
-    ModuleVersion = '1.0.0'
+    ModuleVersion = '0.0.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
 
     # ID used to uniquely identify this module
-    GUID = 'DDC1E869-EF38-470C-B950-A737661537B5'
+    GUID = '8DDB0BEB-3249-469C-B8FE-0C5F56FC5439'
 
     # Author of this module
     Author = 'Claudio Spizzi'
@@ -18,13 +18,13 @@
     # CompanyName = ''
 
     # Copyright statement for this module
-    Copyright = 'Copyright (c) 2018 by Claudio Spizzi. Licensed under MIT license.'
+    Copyright = 'Copyright (c) 2020 by Claudio Spizzi. Licensed under MIT license.'
 
     # Description of the functionality provided by this module
     Description = 'Personal PowerShell Module by Claudio Spizzi with independent functions and cmdlets for SharePoint.'
 
     # Minimum version of the Windows PowerShell engine required by this module
-    PowerShellVersion = '3.0'
+    PowerShellVersion = '5.1'
 
     # Name of the Windows PowerShell host required by this module
     # PowerShellHostName = ''
@@ -51,13 +51,13 @@
     # ScriptsToProcess = @()
 
     # Type files (.ps1xml) to be loaded when importing this module
-    TypesToProcess     = @(
-        'Resources/SharePoint.Types.ps1xml'
+    TypesToProcess = @(
+        'SharePointFever.Xml.Types.ps1xml'
     )
 
     # Format files (.ps1xml) to be loaded when importing this module
-    FormatsToProcess   = @(
-        'Resources/SharePoint.Formats.ps1xml'
+    FormatsToProcess = @(
+        'SharePointFever.Xml.Format.ps1xml'
     )
 
     # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
@@ -65,10 +65,10 @@
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport  = @(
-        'Get-SPListItem'
-        'New-SPListItem'
-        'Remove-SPListItem'
-        'Set-SPListItem'
+        'Get-SPServerListItem'
+        'New-SPServerListItem'
+        'Remove-SPServerListItem'
+        'Set-SPServerListItem'
     )
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.

@@ -28,11 +28,11 @@
     System.Management.Automation.PSCustomObject. The list item as custom object.
 
     .EXAMPLE
-    C:\> Get-SPListItem -SiteUrl 'http://SP01/sites/mysite' -ListName 'List'
+    C:\> Get-SPServerListItem -SiteUrl 'http://SP01/sites/mysite' -ListName 'List'
     Get all items from the demo list.
 
     .EXAMPLE
-    C:\> Get-SPListItem -SiteUrl 'http://SP01/sites/mysite' -ListName 'List' -ItemId 1, 2
+    C:\> Get-SPServerListItem -SiteUrl 'http://SP01/sites/mysite' -ListName 'List' -ItemId 1, 2
     Get the items with id 1 and 2 from the demo list.
 
     .NOTES
@@ -43,7 +43,7 @@
     https://github.com/claudiospizzi/SharePointFever
 #>
 
-function Get-SPListItem
+function Get-SPServerListItem
 {
     [CmdletBinding()]
     param

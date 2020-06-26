@@ -3,8 +3,8 @@
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', '')]
 param ()
 
-$modulePath = Resolve-Path -Path "$PSScriptRoot\..\..\.." | Select-Object -ExpandProperty Path
-$moduleName = Resolve-Path -Path "$PSScriptRoot\..\.." | Get-Item | Select-Object -ExpandProperty BaseName
+$modulePath = Resolve-Path -Path "$PSScriptRoot\..\..\..\.." | Select-Object -ExpandProperty Path
+$moduleName = Resolve-Path -Path "$PSScriptRoot\..\..\.." | Get-Item | Select-Object -ExpandProperty BaseName
 
 Remove-Module -Name $moduleName -Force -ErrorAction SilentlyContinue
 Import-Module -Name "$modulePath\$moduleName" -Force
@@ -12,12 +12,12 @@ Import-Module -Name "$modulePath\$moduleName" -Force
 $Global:TestRoot = "$modulePath\$moduleName"
 
 # Execute tests
-Describe 'Get-SPListItem' {
+Describe 'Get-SPServerListItem' {
 
     Context 'GetAll' {
 
         Mock Invoke-RestMethod -ModuleName 'SharePointFever' -ParameterFilter { $Method = 'Get'; $Uri -eq 'http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList?$expand=CreatedBy,ModifiedBy' } {
-            Get-Content -Path "$Global:TestRoot\Tests\Unit\TestData\ListItem.SP01.Get.All.json" | ConvertFrom-Json
+            Get-Content -Path "$Global:TestRoot\Tests\Unit\Server\TestData\ListItem.SP01.Get.All.json" | ConvertFrom-Json
         }
 
         It 'ShouldParseResult' {
@@ -27,7 +27,7 @@ Describe 'Get-SPListItem' {
             $ListName = 'MyList'
 
             # Act
-            $Result = Get-SPListItem -SiteUrl $SiteUrl -ListName $ListName
+            $Result = Get-SPServerListItem -SiteUrl $SiteUrl -ListName $ListName
 
             # Assert
             $Result.Count | Should Be 3
@@ -77,7 +77,7 @@ Describe 'Get-SPListItem' {
     Context 'GetOne' {
 
         Mock Invoke-RestMethod -ModuleName 'SharePointFever' -ParameterFilter { $Method = 'Get'; $Uri -eq 'http://SP01.contoso.com/sites/mysite/_vti_bin/listdata.svc/MyList(1)?$expand=CreatedBy,ModifiedBy' } {
-            Get-Content -Path "$Global:TestRoot\Tests\Unit\TestData\ListItem.SP01.Get.One.json" | ConvertFrom-Json
+            Get-Content -Path "$Global:TestRoot\Tests\Unit\Server\TestData\ListItem.SP01.Get.One.json" | ConvertFrom-Json
         }
 
         It 'ShouldParseResult' {
@@ -88,7 +88,7 @@ Describe 'Get-SPListItem' {
             $ItemId   = 1
 
             # Act
-            $Result = Get-SPListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $ItemId
+            $Result = Get-SPServerListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $ItemId
 
             # Assert
             Assert-MockCalled -CommandName 'Invoke-RestMethod' -ModuleName 'SharePointFever' -Times 1 -Exactly
@@ -122,7 +122,7 @@ Describe 'Get-SPListItem' {
             $ItemId   = 4
 
             # Act
-            { Get-SPListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $ItemId -ErrorAction Stop } | Should Throw
+            { Get-SPServerListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $ItemId -ErrorAction Stop } | Should Throw
 
             # Assert
             Assert-MockCalled -CommandName 'Invoke-RestMethod' -ModuleName 'SharePointFever' -Times 1 -Exactly

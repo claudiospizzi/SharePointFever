@@ -31,7 +31,7 @@
 
     .EXAMPLE
     C:\> $Property = @{ Title = 'My Demo Item'; Data = 'Test Data' }
-    C:\> Get-SPListItem -SiteUrl 'http://SP01/sites/mysite' -ListName 'List' -Property $Property
+    C:\> Get-SPServerListItem -SiteUrl 'http://SP01/sites/mysite' -ListName 'List' -Property $Property
     Creates a new item and returns the result to the pipeline.
 
     .NOTES
@@ -42,7 +42,7 @@
     https://github.com/claudiospizzi/SharePointFever
 #>
 
-function New-SPListItem
+function New-SPServerListItem
 {
     [CmdletBinding(SupportsShouldProcess = $true)]
     param
@@ -95,7 +95,7 @@ function New-SPListItem
             {
                 $Result = Invoke-RestMethod @InvokeRestMethodParameter @CredentialParameters -ErrorAction Stop
 
-                Get-SPListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $Result.d.Id @CredentialParameters
+                Get-SPServerListItem -SiteUrl $SiteUrl -ListName $ListName -ItemId $Result.d.Id @CredentialParameters
             }
             catch
             {
