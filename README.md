@@ -19,19 +19,19 @@ ToDo
 
 ### SharePoint Server 2010 Legacy
 
-* **Get-SPServerListItem**
+* **Get-SPServerListItem**  
   Get items from a SharePoint list. This command uses the old web api based on
   the _VTI_BIN endpoint.
 
-* **New-SPServerListItem**
+* **New-SPServerListItem**  
   Create an item inside an SharePoint list. This command uses the old web api
   based on the _VTI_BIN endpoint.
 
-* **Remove-SPServerListItem**
+* **Remove-SPServerListItem**  
   Remove an existing item from a SharePoint list. This command uses the old web
   api based on the _VTI_BIN endpoint.
 
-* **Set-SPServerListItem**
+* **Set-SPServerListItem**  
   Update properties of an existing item inside a SharePoint list. This command
   uses the old web api based on the _VTI_BIN endpoint.
 
