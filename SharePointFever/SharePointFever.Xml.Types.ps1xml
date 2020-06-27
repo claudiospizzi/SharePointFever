@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Types>
 
+  <Type>
+    <Name>Microsoft.SharePoint.Client.FieldUserValue</Name>
+    <Members>
+      <ScriptMethod>
+        <Name>ToString</Name>
+        <Script>$this.LookupValue</Script>
+      </ScriptMethod>
+    </Members>
+  </Type>
+
+  <Type>
+    <Name>SharePointFever.Online.TaxonomyFieldValue</Name>
+    <Members>
+      <ScriptMethod>
+        <Name>ToString</Name>
+        <Script>$this.Label</Script>
+      </ScriptMethod>
+    </Members>
+  </Type>
+
 </Types>
