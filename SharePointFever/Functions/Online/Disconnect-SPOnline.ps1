@@ -10,6 +10,11 @@ function Disconnect-SPOnline
     [CmdletBinding()]
     param ()
 
-    $Script:SharePointUrl        = $null
-    $Script:SharePointCredential = $null
+    if ($null -ne $Script:SharePointUrl)
+    {
+        Write-Verbose "Disconnect from SharePoint Online on $Script:SharePointUrl."
+
+        $Script:SharePointUrl        = $null
+        $Script:SharePointCredential = $null
+    }
 }

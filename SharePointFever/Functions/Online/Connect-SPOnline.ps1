@@ -31,9 +31,13 @@ function Connect-SPOnline
         {
             $clientContext = New-SPOnlineClientContext
 
-            # Invoke a simple query against the root web part.
+            Write-Verbose "Connect to SharePoint Online on $Url as $($Credential.UserName)."
+
+            # Invoke a simple query against the root web part to verify we can
+            # invoke queries. We have to do this workaround, because we don't
+            # have to login.
             $web = $clientContext.Web
-            $clientContext.Load($web) # [Func[object, object]] { param($w); $w.Title }
+            $clientContext.Load($web)
             $clientContext.ExecuteQuery()
         }
         finally

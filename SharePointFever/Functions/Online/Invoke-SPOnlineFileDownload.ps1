@@ -11,13 +11,18 @@ function Invoke-SPOnlineFileDownload
     [CmdletBinding()]
     param
     (
+        [Parameter(Mandatory = $true, ParameterSetName = 'InputObject', ValueFromPipeline = $true)]
+        [PSTypeName('SharePointFever.Online.Item')]
+        [System.Object[]]
+        $InputObject,
+
         # Name of the target library for the file upload.
-        [Parameter(Mandatory = $true)]
+        [Parameter(Mandatory = $true, ParameterSetName = 'LibraryAndFile')]
         [System.String]
         $LibraryName,
 
         # Name of the file(s) to download.
-        [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+        [Parameter(Mandatory = $true, ParameterSetName = 'LibraryAndFile')]
         [System.String[]]
         $File,
 
@@ -34,63 +39,62 @@ function Invoke-SPOnlineFileDownload
 
     process
     {
-        foreach ($currentFile in $File)
+        $files = @{}
+
+        if ($PSCmdlet.ParameterSetName -eq 'InputObject')
         {
-            $currentPath = Join-Path -Path $Path -ChildPath $currentFile
-
-            try
+            foreach ($currentInputObject in $InputObject)
             {
-                $clientContext = New-SPOnlineClientContext
-
-                $fileInfo = [Microsoft.SharePoint.Client.File]::OpenBinaryDirect($clientContext, "/$LibraryName/$currentFile")
-                $fileStream = [System.IO.File]::Open($currentPath, [System.IO.FileMode]::Create);
-                $fileInfo.Stream.CopyTo($fileStream);
-                $fileStream.Close()
-                $fileStream.Dispose()
+                $remotePath = '/{0}/{1}' -f $currentInputObject.List, $currentInputObject.File
+                $localPath  = Join-Path -Path $Path -ChildPath $currentInputObject.File
+                $files[$remotePath] = $localPath
             }
-            catch
+        }
+
+        if ($PSCmdlet.ParameterSetName -eq 'LibraryAndFile')
+        {
+            foreach ($currentFile in $File)
             {
-                Write-Error "Failed to download file '$currentFile' from library '$LibraryName' with error: $_"
+                $remotePath = '/{0}/{1}' -f $LibraryName, $currentFile
+                $localPath  = Join-Path -Path $Path -ChildPath $currentFile
+                $files[$remotePath] = $localPath
             }
-            finally
+        }
+
+        foreach ($remotePath in $files.Keys)
+        {
+            $localPath = $files[$remotePath]
+
+            if ($Force.IsPresent -or -not (Test-Path -Path $localPath))
             {
-                if ($null -ne $clientContext)
+                try
                 {
-                    $clientContext.Dispose()
+                    $clientContext = New-SPOnlineClientContext
+
+                    Write-Verbose "Download file '$remotePath' on '$Script:SharePointUrl' to '$localPath'."
+
+                    $fileInfo = [Microsoft.SharePoint.Client.File]::OpenBinaryDirect($clientContext, $remotePath)
+                    $fileStream = [System.IO.File]::Open($localPath, [System.IO.FileMode]::Create)
+                    $fileInfo.Stream.CopyTo($fileStream)
+                    $fileStream.Close()
+                    $fileStream.Dispose()
                 }
+                catch
+                {
+                    Write-Error "Failed to download file '$remotePath' with error: $_"
+                }
+                finally
+                {
+                    if ($null -ne $clientContext)
+                    {
+                        $clientContext.Dispose()
+                    }
+                }
+            }
+            else
+            {
+                Write-Warning "Skip file' $remotePath' on '$Script:SharePointUrl' because it already exists at '$localPath'."
             }
         }
     }
 }
-
-    # begin
-    # {
-    #     $clientContext = Get-SPOnlineClientContext
-    # }
-
-    # process
-    # {
-    #     foreach ($currentFile in $File)
-    #     {
-    #         try
-    #         {
-    #             $library = $clientContext.Web.Lists.GetByTitle($LibraryName)
-
-    #             try
-    #             {
-
-
-    #                 Write-Verbose "Download file '$currentFile' from library '$LibraryName'"
-
-
-    #             }
-    #             finally
-    #             {
-    #             }
-    #         }
-    #         catch
-    #         {
-    #
-    #         }
-    #     }
-    # }

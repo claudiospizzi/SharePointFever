@@ -61,12 +61,31 @@ function Invoke-SPOnlineFileUpload
                     # Add the file to the root of the library. This uploaded
                     # object is then used with the client conext.
                     $fileUploader = $library.RootFolder.Files.Add($fileInfo)
-                    $clientContext.Load($fileUploader)
+                    # $clientContext.Load($fileUploader)
+                    Invoke-SPOnlinePropertyLoad -Object $fileUploader -propertyNames 'ListItemAllFields'
 
-                    Write-Verbose "Upload file '$currentPath' to library '$LibraryName'"
+                    Write-Verbose "Upload file '$currentPath' to library '$LibraryName' on '$Script:SharePointUrl'."
 
                     # Here we really upload the file itself.
                     $clientContext.ExecuteQuery()
+
+                    Convert-SPOnlineItem -Item $fileUploader.ListItemAllFields -ListName $LibraryName
+
+
+
+                    # Get-SPOnlineItem -ListName $LibraryName -Id $item
+
+                    # Expression<Func<T, Object>>[] retrievals
+
+                    # $item.Update()
+
+                    # $clientContext.Load($item)
+                    # $clientContext.ExecuteQuery()
+
+                    # $id = $item['Id']
+                    # $ti = $item['Title']
+
+                    # $clientContext.Load($fileUploader, 'ListItemAllFields');
                 }
                 finally
                 {

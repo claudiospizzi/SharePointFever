@@ -68,7 +68,8 @@
         # SharePoint Online
         'Connect-SPOnline'
         'Disconnect-SPOnline'
-        'Get-SPOnlineListItem'
+        'Get-SPOnlineItem'
+        'Set-SPOnlineItem'
         'Invoke-SPOnlineFileUpload'
         'Invoke-SPOnlineFileDownload'
         # SharePoint Server

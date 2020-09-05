@@ -3,9 +3,9 @@
   <ViewDefinitions>
 
     <View>
-      <Name>SharePointFever.Online.ListItem</Name>
+      <Name>SharePointFever.Online.Item</Name>
       <ViewSelectedBy>
-        <TypeName>SharePointFever.Online.ListItem</TypeName>
+        <TypeName>SharePointFever.Online.Item</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -18,20 +18,24 @@
             <Width>32</Width>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>List</Label>
+            <Width>16</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Created</Label>
-            <Width>20</Width>
+            <Width>22</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>CreatedBy</Label>
-            <Width>20</Width>
+            <Width>18</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Modified</Label>
-            <Width>20</Width>
+            <Width>22</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ModifiedBy</Label>
-            <Width>20</Width>
+            <Width>18</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>File</Label>
@@ -45,6 +49,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Title</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>List</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Created</PropertyName>
